@@ -1,18 +1,17 @@
-
 const textField = document.getElementById('text-field');
 const wordCountDisplay = document.getElementById('word-count');
-
 
 document.addEventListener('DOMContentLoaded', function() {
     textField.addEventListener('input', wordCounter);
 })
 
-
 function wordCounter() {
-    const text = textField.value.trim()
+    // Access the value of the text field
+    const text = textField.value.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"").trim();
 
-    const words = text.split(/\s+/).filter( word => word.length > 0)
+    // Split the text by spaces and filter out empty strings
+    const words = text.split(/\s+/).filter(word => word.length > 0);
 
-    wordCountDisplay.textContent = `Word count: ${words.length}`
-
+    // Update the word count display
+    wordCountDisplay.textContent = `Word count: ${words.length}`;
 }
